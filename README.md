@@ -1,40 +1,30 @@
-# CIPS Examination Preparation KIT
+# CIPS Exam Hub
 
-Interactive study companion for the Certified Interventional Pain Sonologist (CIPS)
-examination (World Institute of Pain, Board of Examination), aligned with the official
-CIPS Examination Information Bulletin.
+Interactive study hub for the Certified Interventional Pain Sonologist (CIPS) examination,
+built from the CIPS MCQ Bank 1000, the CIPS Study Guide (with Practice MCQ volumes 1-2 and the
+12-week reading plan) and the Mock Oral Exam Cases.
 
-## Run
+| Section | What it does |
+|---|---|
+| Overview | Readiness weighted like the exam (written 20%, practical 60%, oral 20%), where to focus next, this week's reading |
+| Part 1 | 1,120 MCQs: custom practice sets, 100-question 2-hour mock exam, spaced-repetition review, mastery by domain, weakest keywords, a reading list built from your mistakes, search, flags |
+| Part 2A | 34 procedure guides (target, position, sonoanatomy, technique, injectate, pearls, sources), 1-4 confidence ratings, recall mode, and a 4-station timed simulator with the 8-item examiner checklist |
+| Part 2B | 12 mock oral cases: 5-minute vignette timer, the nine examiner questions, model answers, 1-4 self-scoring, weakest question area |
+| 12-week plan | Week-by-week reading, scanning drills and tests, with check-off |
+
+Progress is stored in the browser (localStorage). Use **Backup & reset** to export or import it.
+
+## Run locally
+
+No build step. Serve the folder over http:
 
 ```bash
-npm install
-npm run dev      # local dev server
-npm run build    # production build → dist/
+python3 -m http.server 8000
 ```
 
-## Structure
+## Regenerating the data
 
-| Route | Page | Content source |
-|---|---|---|
-| `/` | Home — overview, three parts, syllabus snapshot | — |
-| `/introduction` | Exam format, scoring weights, eligibility, application | `src/data/exam.ts` |
-| `/part-1` | MCQ practice player with topic filter | `src/content/part-1/*.json` |
-| `/part-2a` | Practical procedure guides by region | `src/content/part-2a/*.json` |
-| `/part-2b` | Oral viva cases by topic | `src/content/part-2b/*.json` |
+`data/mcq.json` and `data/guide.json` were extracted from the PDFs with the scripts in `tools/`
+(`pdftotext -layout`, then `parse_mcq.py`, `parse_guide.py`, `finalize.py`).
 
-## Adding content
-
-Drop a batch JSON file (array of entries per `../content/CONTENT-CONTRACT.md`) into the
-matching `src/content/part-*/` folder and rebuild/restart — files are bundled at build
-time via `import.meta.glob` and deduplicated by entry `id`, so corrected batches can be
-re-imported safely. Entry schema: `src/types/content.ts`. Syllabus topic IDs:
-`src/data/syllabus.ts` (mirrors `../work/site-integration/topic-map.json`).
-
-Seed file `src/content/part-1/sample-bulletin.json` contains the official bulletin
-sample MCQs so the player is testable before authored batches arrive.
-
-## Design tokens
-
-Colors (HSL CSS variables) and fonts live in `src/index.css` + `tailwind.config.js`
-(IBM Plex Sans body / IBM Plex Serif display; part-coded accents: Part 1 teal,
-Part 2A copper, Part 2B plum). Centralized so the theme can be restyled later.
+Deployment: every push to `main` publishes the site with GitHub Pages (`.github/workflows/deploy.yml`).

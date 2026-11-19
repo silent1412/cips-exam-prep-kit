@@ -1,12 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CIPS Examination Preparation KIT</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIPS Exam Hub</title>
+<meta name="description" content="Interactive CIPS exam preparation: 1,120 MCQs with progress tracking, 34 procedure guides with a station simulator, and 12 mock oral cases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L3 26 A16 16 0 0 0 29 26 Z' fill='%2318232D'/%3E%3Cpath d='M7 21 Q16 17 25 21' stroke='%23fff' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+<script>
+  try { var t = JSON.parse(localStorage.getItem('cips.v1') || '{}').theme; if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+  <nav class="rail" aria-label="Main">
+    <a class="brand" href="#/">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 L2 26 A17 17 0 0 0 30 26 Z" class="brand-fan"/><path d="M7 21 Q16 16.5 25 21" class="brand-echo"/></svg>
+      <span>CIPS Exam Hub</span>
+    </a>
+    <a href="#/" data-nav="hub" class="nav-hub">Overview</a>
+    <a href="#/part1" data-nav="part1" class="nav-p1"><b>Part 1</b><small>Theoretical MCQ</small></a>
+    <a href="#/part2a" data-nav="part2a" class="nav-p2a"><b>Part 2A</b><small>Cadaver practical</small></a>
+    <a href="#/part2b" data-nav="part2b" class="nav-p2b"><b>Part 2B</b><small>Modified oral</small></a>
+    <a href="#/plan" data-nav="plan" class="nav-hub">12-week plan</a>
+    <div class="rail-foot">
+      <button type="button" id="themeBtn" class="linkish">Switch to dark</button>
+      <a href="#/data" data-nav="data">Backup &amp; reset</a>
+    </div>
+  </nav>
+  <main id="main" tabindex="-1"><p class="loading">Loading question bank…</p></main>
+</div>
+<script src="assets/app.js"></script>
+</body>
 </html>
