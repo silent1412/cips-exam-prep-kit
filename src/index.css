@@ -1,0 +1,70 @@
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-sans/700.css';
+@import '@fontsource/ibm-plex-serif/500.css';
+@import '@fontsource/ibm-plex-serif/600.css';
+@import '@fontsource/ibm-plex-serif/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm paper reading surface */
+    --background: 42 33% 97%;
+    --foreground: 200 30% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 30% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 30% 13%;
+    /* Deep petrol — brand / navigation */
+    --primary: 192 68% 20%;
+    --primary-foreground: 42 33% 96%;
+    --secondary: 192 25% 92%;
+    --secondary-foreground: 192 68% 18%;
+    --muted: 42 20% 92%;
+    --muted-foreground: 200 12% 38%;
+    /* Amber — sparing accent */
+    --accent: 36 90% 40%;
+    --accent-foreground: 42 33% 97%;
+    --destructive: 0 72% 44%;
+    --destructive-foreground: 42 33% 97%;
+    --border: 200 16% 86%;
+    --input: 200 16% 82%;
+    --ring: 192 68% 24%;
+    --radius: 0.5rem;
+    --sidebar-background: 192 55% 15%;
+    --sidebar-foreground: 42 25% 88%;
+    --sidebar-primary: 36 90% 45%;
+    --sidebar-primary-foreground: 192 55% 12%;
+    --sidebar-accent: 192 45% 22%;
+    --sidebar-accent-foreground: 42 33% 96%;
+    --sidebar-border: 192 45% 24%;
+    --sidebar-ring: 36 90% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: 'ss01' on;
+  }
+  h1, h2, h3 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: hsl(var(--accent) / 0.25);
+  }
+}
+
+@layer utilities {
+  .reading {
+    max-width: 72ch;
+  }
+}
